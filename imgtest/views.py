@@ -6,6 +6,7 @@ import base64
 
 
 def saveImage(request):
+    print(request.method)
     if request.method == "POST":
         file = request.FILES
         imgtmp = file.get('image', None).read()
@@ -17,7 +18,13 @@ def saveImage(request):
 
 
 def viewImage(request):
-    image = models.ImageModel.objects(filename='WeChat_img').first()
-    temp_data = image.data.read()
-    temp_data = base64.b64encode(temp_data)
-    return render(request, 'viewimg.html', {'imagedata': temp_data})
+    imglist = []
+    image = models.ImageModel.objects(filename='WeChat_img')
+    print(image)
+    for each in image:
+        temp_data = each.data.read()
+        temp_data = base64.b64encode(temp_data)
+        temp_data = bytes.decode(temp_data)
+        imglist.append(temp_data)
+
+    return render(request, 'viewimg.html', {'imglist': imglist})

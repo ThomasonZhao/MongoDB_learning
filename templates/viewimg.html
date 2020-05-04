@@ -7,8 +7,8 @@
 <body>
 <h1>图片预览</h1>
 <br/>
- 
-    <img src="data:image/jpeg;base64,{{ imagedata }}">
- 
+{% for img in imglist %}
+    <img src="data:image/jpeg;base64,{{ img }}">
+{% endfor %}
 </body>
 </html>
