@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 from mongoengine import connect
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -78,7 +77,7 @@ DATABASES = {
         'ENGINE': None,
     }
 }
-connect('imgs', host='192.168.0.102')
+connect('imgs', host='192.168.0.102')  # 填写你的数据库ip地址（建议以后全部填写域名）
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
